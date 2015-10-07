@@ -260,7 +260,7 @@ public abstract class AbstractSassMojo extends AbstractMojo {
 		System.setProperty("org.jruby.embed.localcontext.scope", "threadsafe");
 
 		log.debug("Execute Sass Ruby script:\n\n" + sassScript + "\n\n");
-		final ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
+		final ScriptEngineManager scriptEngineManager = new ScriptEngineManager(this.getClass().getClassLoader());
 		final ScriptEngine jruby = scriptEngineManager.getEngineByName("jruby");
 		try {
 			final CompilerCallback compilerCallback = new CompilerCallback(log);
